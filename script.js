@@ -3,6 +3,16 @@ function getComputerChoice(){
   return choice[Math.floor(Math.random() * 3)];
 }
 
+function getPlayerChoice(){
+  let choice = Array('Rock', 'Scissors','Paper');
+  do {
+    let out = prompt("Your choice?").toLowerCase();
+    out = out.charAt(0).toUpperCase() + out.slice(1);
+  }
+  while (choice.indexOf(out) == -1);
+  return out;
+}
+
 function playRound(playerSelection, computerSelection){
   let choice = Array('Rock', 'Scissors','Paper', 'Rock');
   if (playerSelection === computerSelection){
@@ -21,3 +31,4 @@ function playRound(playerSelection, computerSelection){
     return 2;
   }
 }
+
