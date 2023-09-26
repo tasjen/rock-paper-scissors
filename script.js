@@ -38,7 +38,7 @@ function game(){
   let player = 0;
   let computer = 0;
 
-  for (let i = 0; i < 5; i++){
+  while (player < 5 && computer < 5){
     let result = playRound(getPlayerChoice(), getComputerChoice());
     if (result === 1){
       player++;
