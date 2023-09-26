@@ -5,12 +5,13 @@ function getComputerChoice(){
 
 function getPlayerChoice(){
   let choice = Array('Rock', 'Scissors','Paper');
-  let out;
-  do {
+  let out = prompt("Your choice?").toLowerCase();
+  out = out.charAt(0).toUpperCase() + out.slice(1);
+  while (choice.indexOf(out) === -1){
+    alert("Invalid choice");
     out = prompt("Your choice?").toLowerCase();
     out = out.charAt(0).toUpperCase() + out.slice(1);
   }
-  while (choice.indexOf(out) == -1);
   return out;
 }
 
