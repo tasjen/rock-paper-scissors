@@ -1,13 +1,18 @@
+const CHOICE = Array('Rock', 'Scissors','Paper');
+
 function getComputerChoice(){
-  let choice = Array('Rock', 'Scissors','Paper');
-  return choice[Math.floor(Math.random() * 3)];
+  //randomly choose one from Rock, Scissors, and Paper
+  return CHOICE[Math.floor(Math.random() * 3)];
 }
 
 function getPlayerChoice(){
-  let choice = Array('Rock', 'Scissors','Paper');
+  //get input from user as a string, convert it to lowercase
+  //, then capitalize its first character
   let out = prompt("Your choice?").toLowerCase();
   out = out.charAt(0).toUpperCase() + out.slice(1);
-  while (choice.indexOf(out) === -1){
+
+  
+  while (CHOICE.indexOf(out) === -1){
     alert("Invalid choice");
     out = prompt("Your choice?").toLowerCase();
     out = out.charAt(0).toUpperCase() + out.slice(1);
