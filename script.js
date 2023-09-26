@@ -24,34 +24,37 @@ function playRound(playerSelection, computerSelection){
   let choice = Array('Rock', 'Scissors','Paper', 'Rock');
   if (playerSelection === computerSelection){
     console.log(`Tie! ${playerSelection} vs ${computerSelection}`)
-    return;
+    return 'tie';
   }
 
   //if computerSelection is the next element of playerSelection in choice then player wins
 
   if (choice[choice.indexOf(playerSelection) + 1] === computerSelection){
     console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
-    return 1;
+    return 'playerWins';
   }
   else {
     console.log(`You Lose! ${computerSelection} beats ${playerSelection}`)
-    return 2;
+    return 'computerWins';
   }
 }
 
 function game(){
-  let player = 0;
-  let computer = 0;
+  let playerScore = 0;
+  let computerScore = 0;
 
-  while (player < 5 && computer < 5){
+  while (playerScore < 5 && computerScore < 5){
     let result = playRound(getPlayerChoice(), getComputerChoice());
-    if (result === 1){
-      player++;
+    if (result === 'tie'){
+      continue;
     }
-    else if (result === 2){
-      computer++;
+    if (result === 'playerWins'){
+      playerScore++;
     }
-    console.log("player:", player, "computer:", computer);
+    else if (result === 'computerWins'){
+      computerScore++;
+    }
+    console.log("player:", playerScore, "computer:", computerScore);
   }
 }
 
