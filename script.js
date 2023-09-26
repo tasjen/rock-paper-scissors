@@ -32,3 +32,21 @@ function playRound(playerSelection, computerSelection){
   }
 }
 
+function game(){
+  let player = 0;
+  let computer = 0;
+
+  for (let i = 0; i < 5; i++){
+    let result = playRound(getPlayerChoice(), getComputerChoice());
+    if (result === 1){
+      player++;
+    }
+    else if (result === 2){
+      computer++;
+    }
+    console.log("player:", player, "computer:", computer);
+  }
+}
+
+game();
+
