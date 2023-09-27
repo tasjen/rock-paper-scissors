@@ -29,7 +29,7 @@ function playRound(playerSelection, computerSelection){
 
   //if computerSelection is the next element of playerSelection in choice then player wins
 
-  if (choice[(CHOICE.indexOf(playerSelection) + 1) % 3] === computerSelection){
+  if (CHOICE[(CHOICE.indexOf(playerSelection) + 1) % 3] === computerSelection){
     console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
     return 'playerWins';
   }
