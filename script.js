@@ -1,4 +1,4 @@
-const CHOICE = Array('Rock', 'Scissors','Paper');
+const CHOICE = ['Rock', 'Scissors','Paper'];
 
 function getComputerChoice(){
   //randomly choose one from Rock, Scissors, and Paper
@@ -21,7 +21,7 @@ function getPlayerChoice(){
 }
 
 function playRound(playerSelection, computerSelection){
-  let choice = Array('Rock', 'Scissors','Paper', 'Rock');
+  let choice = ['Rock', 'Scissors','Paper', 'Rock'];
   if (playerSelection === computerSelection){
     console.log(`Tie! ${playerSelection} vs ${computerSelection}`)
     return 'tie';
