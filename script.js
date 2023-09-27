@@ -21,7 +21,7 @@ function getPlayerChoice(){
 }
 
 function playRound(playerSelection, computerSelection){
-  let choice = ['Rock', 'Scissors','Paper', 'Rock'];
+
   if (playerSelection === computerSelection){
     console.log(`Tie! ${playerSelection} vs ${computerSelection}`)
     return 'tie';
@@ -29,7 +29,7 @@ function playRound(playerSelection, computerSelection){
 
   //if computerSelection is the next element of playerSelection in choice then player wins
 
-  if (choice[choice.indexOf(playerSelection) + 1] === computerSelection){
+  if (choice[(CHOICE.indexOf(playerSelection) + 1) % 3] === computerSelection){
     console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
     return 'playerWins';
   }
