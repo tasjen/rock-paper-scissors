@@ -2,9 +2,18 @@ body {
   font-size: 50px;
 }
 
-button {
+#computer-side button,
+#player-side button {
   font-size: 50px;
   padding: 25px;
+}
+
+#computer-score,
+#player-score {
+  text-align: center;
+  font-size: 80px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 #computer-side,
@@ -21,5 +30,22 @@ button {
   gap: 50px;
   margin: 50px;
 }
+
+.chosen {
+  background-color: black;
+  color: white;
+}
+
+#container{
+  flex: 1;
+  display:flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+#next-round{
+  font-size: 36px;
+}
+
 
 
