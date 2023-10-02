@@ -1,62 +1,92 @@
 const CHOICE = ['Rock', 'Scissors','Paper'];
 
+const playerChoice = document.querySelectorAll('#player-side button');
+const playButton = document.querySelector('#play-button');
+
+const computerScoreDisplay = document.querySelector('#computer-score');
+const message = document.querySelector('#message');
+const playerScoreDisplay = document.querySelector('#player-score');
+
+let playerScore = 0;
+let computerScore = 0;
+
+let isFirstRound = true;
+let isEndRound = false;
+
+
+playerChoice.forEach((button) =>
+  button.addEventListener('click', (event) => {
+    if (!isEndRound && !isFirstRound) playRound(event.target.textContent);
+  })
+);
+
+playButton.addEventListener('click', () => {
+  
+  if (isFirstRound) {
+    resetUI(); //when clicking play again
+    playButton.textContent = 'Next Round';
+    isFirstRound = false;
+  }
+  else if (isEndRound) {
+    message.textContent = 'Select Your Choice';
+    isEndRound = false;
+  }
+
+  playButton.style.display = 'none'; //hide the button after clicking it
+
+})
+
 function getComputerChoice(){
   //randomly choose one from Rock, Scissors, and Paper
   return CHOICE[Math.floor(Math.random() * 3)];
 }
 
-function getPlayerChoice(){
-  //get input from user as a string, convert it to lowercase
-  //, then capitalize its first character
-  let out = prompt("Your choice?").toLowerCase();
-  out = out.charAt(0).toUpperCase() + out.slice(1);
+function playRound(playerChoice){
+  const computerChoice = getComputerChoice();
 
-  
-  while (CHOICE.indexOf(out) === -1){
-    alert("Invalid choice");
-    out = prompt("Your choice?").toLowerCase();
-    out = out.charAt(0).toUpperCase() + out.slice(1);
-  }
-  return out;
-}
-
-function playRound(playerSelection, computerSelection){
-
-  if (playerSelection === computerSelection){
-    console.log(`Tie! ${playerSelection} vs ${computerSelection}`)
-    return 'tie';
+  if (playerChoice === computerChoice){
+    message.textContent = `Tie! ${playerChoice} vs ${computerChoice}`;
   }
 
   //if computerSelection is the next element of playerSelection in choice then player wins
-
-  if (CHOICE[(CHOICE.indexOf(playerSelection) + 1) % 3] === computerSelection){
-    console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
-    return 'playerWins';
+  else if (CHOICE[(CHOICE.indexOf(playerChoice) + 1) % 3] === computerChoice){
+    message.textContent = `You Win! ${playerChoice} beats ${computerChoice}`;
+    playerScoreDisplay.textContent = ++playerScore;
   }
+
   else {
-    console.log(`You Lose! ${computerSelection} beats ${playerSelection}`)
-    return 'computerWins';
+    message.textContent =`You Lose! ${computerChoice} beats ${playerChoice}`;
+    computerScoreDisplay.textContent = ++computerScore;
+  }
+
+  //shows playButton after the round ends
+  isEndRound = true;
+  playButton.style.display = 'inline';
+  
+  if(checkWinner()) resetGame();
+}
+
+function checkWinner(){
+  if (playerScore === 5){
+    alert('Player wins the game!');
+    return true;
+  }
+  else if (computerScore === 5){
+    alert('Computer wins the game!');
+    return true;
   }
 }
 
-function game(){
-  let playerScore = 0;
-  let computerScore = 0;
-
-  while (playerScore < 5 && computerScore < 5){
-    let result = playRound(getPlayerChoice(), getComputerChoice());
-    if (result === 'tie'){
-      continue;
-    }
-    if (result === 'playerWins'){
-      playerScore++;
-    }
-    else if (result === 'computerWins'){
-      computerScore++;
-    }
-    console.log("player:", playerScore, "computer:", computerScore);
-  }
+function resetGame(){
+  playerScore = 0;
+  computerScore = 0;
+  isFirstRound = true;
+  isEndRound = false;
+  playButton.textContent = 'Play Again!';
 }
 
-game();
-
+function resetUI(){
+  playerScoreDisplay.textContent = playerScore;
+  computerScoreDisplay.textContent = computerScore;
+  message.textContent = 'Select your choice';
+}

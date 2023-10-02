@@ -2,6 +2,14 @@ body {
   font-size: 50px;
 }
 
+
+#computer-side,
+#player-side {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
 #computer-side button,
 #player-side button {
   font-size: 50px;
@@ -16,35 +24,22 @@ body {
   margin-bottom: 100px;
 }
 
-#computer-side,
-#player-side {
-  display: flex;
-  justify-content: center;
-  gap: 100px;
-}
-
-#scores {
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 50px;
-  margin: 50px;
-}
-
 .chosen {
   background-color: black;
   color: white;
 }
 
 #container{
-  flex: 1;
   display:flex;
   justify-content: center;
   gap: 100px;
 }
 
-#next-round{
+#play-button{
   font-size: 36px;
+  padding: 100px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 
