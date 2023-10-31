@@ -38,7 +38,7 @@ playButton.addEventListener('click', () => {
 
   playerChoice.forEach(button => button.classList.remove('selected-choice'));
   computerChoice.forEach(button => button.classList.remove('selected-choice'));
-  playButton.style.display = 'none'; //hide the button after clicking it
+  playButton.style.display = 'none'; //hide this button after clicking it
 
 })
 
@@ -76,7 +76,9 @@ function playRound(playerChoice){
   isEndRound = true;
   playButton.style.display = 'inline';
   
-  if(checkWinner()) resetGame();
+  setTimeout(function(){
+    if(checkWinner()) resetGame();
+  }, 50);
 }
 
 function checkWinner(){
