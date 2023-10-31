@@ -42,5 +42,9 @@ body {
   padding-bottom: 25px;
 }
 
+.selected-choice{
+  background-color: #aaa;
+}
+
 
 

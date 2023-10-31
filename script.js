@@ -1,5 +1,6 @@
 const CHOICE = ['Rock', 'Scissors','Paper'];
 
+const computerChoice = document.querySelectorAll('#computer-side button');
 const playerChoice = document.querySelectorAll('#player-side button');
 const playButton = document.querySelector('#play-button');
 
@@ -16,7 +17,10 @@ let isEndRound = false;
 
 playerChoice.forEach((button) =>
   button.addEventListener('click', (event) => {
-    if (!isEndRound && !isFirstRound) playRound(event.target.textContent);
+    if (!isEndRound && !isFirstRound) {
+      playRound(event.target.textContent);
+      button.classList.add('selected-choice');
+    }
   })
 );
 
@@ -32,13 +36,22 @@ playButton.addEventListener('click', () => {
     isEndRound = false;
   }
 
+  playerChoice.forEach(button => button.classList.remove('selected-choice'));
+  computerChoice.forEach(button => button.classList.remove('selected-choice'));
   playButton.style.display = 'none'; //hide the button after clicking it
 
 })
 
 function getComputerChoice(){
   //randomly choose one from Rock, Scissors, and Paper
-  return CHOICE[Math.floor(Math.random() * 3)];
+  const choice = CHOICE[Math.floor(Math.random() * 3)]; 
+  for (let button of computerChoice){
+    if (button.textContent === choice){
+      button.classList.add('selected-choice');
+      break;
+    }
+  }
+  return choice;
 }
 
 function playRound(playerChoice){
